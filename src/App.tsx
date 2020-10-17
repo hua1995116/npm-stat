@@ -10,11 +10,10 @@ import axios from 'axios';
 import { getParams, sliceMonth, sliceWeek } from './utils';
 import moment from 'moment';
 
+const query = getParams(window.location.href);
+const { startTime, endTime, packages } = query || {};
+
 function App() {
-  const onChange = () => {
-
-  }
-
   const [data, setData] = useState([]);
 
   const fetchData = async ({packages, startTime, endTime}: FormType) => {
@@ -23,11 +22,10 @@ function App() {
 		console.log(result);
 		setData(result.data.downloads)
 	}
-	const query = getParams(window.location.href);
-	const { startTime, endTime, packages } = query;
+	
 	let initialValues = {
-		startTime: moment(startTime),
-		endTime: moment(endTime),
+		startTime: startTime && moment(startTime),
+		endTime: startTime && moment(endTime),
 		packages
 	}
 	useEffect(() => {
@@ -47,9 +45,15 @@ function App() {
 		<div className="App">
 			<Logo></Logo>
 			<Pannel fetchData={fetchData} initialValues={initialValues}></Pannel>
-			<Chart data={data} name={"按天展示"}></Chart>
-			<Chart data={weekData} name={"按周展示"}></Chart>
-			<Chart data={monthData} name={"按月展示"}></Chart>
+			{
+				data.length ? <Chart data={data} name={"按天展示"}></Chart> : null
+			}
+			{
+				weekData.length ? <Chart data={weekData} name={"按周展示"}></Chart> : null
+			}
+			{
+				monthData.length ?	<Chart data={monthData} name={"按月展示"}></Chart> : null
+			}			
 			<Github />
     </div>
   );
