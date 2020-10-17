@@ -2,37 +2,62 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.logo-wrapper {
+  margin: 20px 0 50px;
+}
+
+.logo-text {
+  margin: 0 10px;
+  font-weight: 900;
+  font-size: 26px;
+  color: #6c91ff;
+  vertical-align: top;
+}
+
+.logo-icon {
+  vertical-align: top;
+  height: 31px; 
+}
+
+.chart-wrapper {
+  width: 85%;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.chart-desc {
+  margin: 10px 0;
+  text-align: center;
+  font-weight: 500;
+  color: #333333;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+  40%,
+  80% {
+    transform: rotate(10deg);
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
   }
-  to {
-    transform: rotate(360deg);
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
   }
 }
