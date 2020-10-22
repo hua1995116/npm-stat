@@ -3,9 +3,9 @@ import { Form, DatePicker, Button, Input } from "antd";
 import { Moment } from "moment";
 
 export interface FormType {
-  startTime: Moment
-	endTime: Moment
-	packages: string
+  startTime: Moment;
+  endTime: Moment;
+  packages: string;
 }
 
 const layout = {
@@ -17,42 +17,40 @@ const tailLayout = {
 };
 
 export interface PannelProps {
-	fetchData: ({ }: FormType) => Promise<void>
-	initialValues: FormType | {}
+  fetchData: ({}: FormType) => Promise<void>;
+  initialValues: FormType | {};
 }
 
 function Pannel(props: PannelProps) {
-	const { fetchData, initialValues } = props;
-	console.log(initialValues);
-	const onFinish = (values: FormType) => {
-		console.log('Success:', values);
-		fetchData(values);
+  const { fetchData, initialValues } = props;
+  const onFinish = (values: FormType) => {
+    fetchData(values);
   };
 
   return (
     <Form
-			{...layout}
-			name="basic"
+      {...layout}
+      name="basic"
       layout="horizontal"
-			style={{ width: "50vw", margin: '0 auto' }}
-			size={"middle"}
-			onFinish={onFinish}
-			initialValues={initialValues}
-		>
-			<Form.Item label="packages" name="packages">
+      style={{ width: "50vw", margin: "0 auto" }}
+      size={"middle"}
+      onFinish={onFinish}
+      initialValues={initialValues}
+    >
+      <Form.Item label="packages" name="packages">
         <Input />
-			</Form.Item>
+      </Form.Item>
       <Form.Item label="startTime" name="startTime">
-				<DatePicker style={{width: '100%'}}/>
-			</Form.Item>
-			<Form.Item label="endTime" name="endTime">
-        <DatePicker style={{width: '100%'}}/>
-			</Form.Item>
-			<Form.Item {...tailLayout}>
-				<Button type="primary" htmlType="submit" style={{width: '100%'}}>
+        <DatePicker style={{ width: "100%" }} />
+      </Form.Item>
+      <Form.Item label="endTime" name="endTime">
+        <DatePicker style={{ width: "100%" }} />
+      </Form.Item>
+      <Form.Item {...tailLayout}>
+        <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
           Submit
         </Button>
-			</Form.Item>
+      </Form.Item>
     </Form>
   );
 }

@@ -35,10 +35,10 @@ interface ChartProps {
 
 function Demo(props: ChartProps) {
   const { data, name } = props;
-  console.log(data);
   return (
     <div className="chart-wrapper">
-      <Chart  height={200} autoFit data={data}>
+      <h2 className="chart-desc">{name}</h2>
+      <Chart height={200} autoFit data={data}>
         <Path
           animate={{
             appear: {
@@ -51,7 +51,6 @@ function Demo(props: ChartProps) {
           position="day*downloads"
         />
       </Chart>
-      <p className="chart-desc">{name}</p>
     </div>
   );
 }
